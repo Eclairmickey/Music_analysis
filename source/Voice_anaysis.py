@@ -4,8 +4,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
-file_name="sample_voice/fast1.wav"
-
+file_name="../sample_voice/fast1.wav"
 # 音声ファイルの読み込み
 sound = AudioSegment.from_file(file_name,"wav")
 
