@@ -4,7 +4,7 @@ import scipy.fftpack
 from pylab import *
 
 if __name__=="__main__":
-    wf=wave.open("../sample_voice/fast1.wav","r")
+    wf=wave.open("../sample_voice/fast3.wav","r")
     fs=wf.getframerate() #サンプリング周波数
     x=wf.readframes(wf.getnframes())
     x=frombuffer(x,dtype="int16")/32768.0 #+1,-1に正規化
