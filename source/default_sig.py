@@ -28,8 +28,7 @@ for x in direct:
 
         num=i%3
         plt.subplot(1,3,num+1)
-        print(i,',',num)
-        #凡例の追加を行う
+        print(i,',',num+1)
         plt.plot(sample)
         i+=1
 
