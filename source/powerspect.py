@@ -4,7 +4,10 @@ from pydub import *
 import numpy as np
 import matplotlib.pyplot as plt
 import math
+
+##サンプリング開始位置
 start=0
+#サンプル数
 N=512
 
 #パスの指定
@@ -12,12 +15,12 @@ path="../trim_voice/"
 direct=os.listdir(path)
 
 i=0
-for x in direct:
-    if os.path.exists(path+x):
+for name in direct:
+    if os.path.exists(path+name) :
         #path結合して音源の読み込み
-        file_name=path+x
+        file_name=path+name
         sound=AudioSegment.from_file(file_name,"wav")
-        print(sound.frame_rate)
+
         # 音声データをリストで抽出 
         sound_ar = sound.get_array_of_samples()
 
@@ -35,20 +38,27 @@ for x in direct:
         spec=np.fft.fft(x)
 
         #パワースペクトル
-        fft_signal_power=np.sqrt(abs(spec))
+        fft_signal_power=abs(spec)**2
 
         #分析の長さで割る
         fft_signal_power=fft_signal_power/N
-
-        #デシベル換算
-        fft_signal_power=10*np.log10(fft_signal_power)
-
         
         num=i%3
+        
         plt.subplot(1,3,num+1)
-        print(i,',',num)
+        plt.xlabel("frequency[Hz]")
+        plt.ylabel("Power[msec^2/Hz]")
+        if i<3:
+                title="Speaker"+str(i+1)
+                plt.title(title)
+                speed="fast"
+        else:
+                speed="slow"
+        #print(i,',',num)
         #信号をグラフにプロットする
-        plt.plot(fft_signal_power)
-        i+=1
 
+        plt.plot(fft_signal_power,label=speed)
+        plt.legend(loc=(0.6,0.8))
+        i+=1
+        
 plt.show()
