@@ -21,14 +21,13 @@ for name in direct:
         file_name=path+name
         sound=AudioSegment.from_file(file_name,"wav")
 
-        # 音声データをリストで抽出 
+        # 音声データを配列で抽出し,numpyに変換 
         sound_ar = sound.get_array_of_samples()
+        soundnp=np.array(sound_ar)
 
         #numpyにステレオ音源の片側の音源を抽出しておく
-        sample =sound_ar[::sound.channels]
+        sample =soundnp[::sound.channels]
 
-        #正規化
-        x=np.frombuffer(sample,dtype="int16")/32768.0
 
         #窓関数(hammingwindowをかける)
         HammingWindow=np.hamming(N)
@@ -54,11 +53,10 @@ for name in direct:
                 speed="fast"
         else:
                 speed="slow"
-        #print(i,',',num)
+       
         #信号をグラフにプロットする
-
         plt.plot(fft_signal_power,label=speed)
         plt.legend(loc=(0.6,0.8))
         i+=1
-        
+
 plt.show()

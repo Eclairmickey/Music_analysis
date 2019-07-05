@@ -1,0 +1,26 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+
+[packages]
+numpy = "*"
+shell = "*"
+librosa = "*"
+sklearn = "*"
+numba = "*"
+scipy = "*"
+matplotlib = "*"
+colorama = "*"
+pydub = "*"
+pygame = "*"
+pylab = "*"
+pandas = "*"
+seaborn = "*"
+wave = "*"
+ndarray = "*"
+
+[requires]
+python_version = "3.6"
