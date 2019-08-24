@@ -14,7 +14,7 @@ music,fs=librosa.audio.load(file_name)
 
 #短時間フーリエ変換
 D=librosa.stft(music)
-
+#打楽器成分とメロディ成分に分ける
 D_harmonic,D_percussive=librosa.decompose.hpss(D)
 
 #グラフ描画
