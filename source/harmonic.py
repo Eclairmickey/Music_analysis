@@ -22,7 +22,7 @@ D_harmonic,D_percussive=librosa.decompose.hpss(D)
 rp=np.max(np.abs(D))
 plt.figure(figsize=(12,8))
 #周波数ごとの振幅スペクトログラムをプロット
-librosa.display.specshow(librosa.amplitude_to_db(np.abs(D_percussive),ref=rp),y_axis='log',x_axis='time')
+librosa.display.specshow(librosa.amplitude_to_db(np.abs(D_harmonic),ref=rp),y_axis='log',x_axis='time')
 plt.colorbar()
 plt.show()
 print(D_percussive)
