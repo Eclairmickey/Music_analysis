@@ -11,8 +11,8 @@ sr=44100
 
 #音源読み込み(audio.load(ファイル名,offset,duration))
 #offset部分からdurationで設定した秒数分切り出し
-file_name="Sample_Song/AtlanticoBlue.mp3"
-music,fs=librosa.audio.load(file_name,sr=sr,offset=1.0,duration=15.0)
+file_name="Sample_Song/CatchtheMoment.mp3"
+music,fs=librosa.audio.load(file_name,sr=sr,offset=56.0,duration=15.0)
 print(music)
 #打楽器成分とメロディ成分に分ける
 D_harmonic,D_percussive=librosa.effects.hpss(music)
